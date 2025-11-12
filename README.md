@@ -45,6 +45,23 @@ Future versions may include additional modules or storage layers.
 
 *Interface previews of CargoMagic, based on final product design.*
 
+<p align="center">
+  <img src="./assets/cargomagic-calculation.png" width="390" alt="CargoMagic calculation screen — container utilization and CSV export">
+  <img src="./assets/cargomagic-overview.png" width="390" alt="CargoMagic full interface layout — desktop logistics planning application">
+</p>
+
+<p align="center" style="font-size: 14px;">
+  Calculation and interface overview views.
+</p>
+
+<p align="center">
+  <img src="./assets/cargomagic-dashboard.png" width="800" alt="CargoMagic desktop interface — load planning dashboard">
+</p>
+
+<p align="center" style="font-size: 14px;">
+  Main dashboard with load list and utilization data.
+</p>
+
 
 ## Status
 **Active / Desktop MVP**  
