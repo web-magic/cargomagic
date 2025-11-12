@@ -20,13 +20,39 @@ The system is designed for reliability, speed, and complete data privacy.
 **Data Export:** CSV and JSON formats  
 **Platforms:** Windows · macOS · Linux  
 
-*(Additional stack components to be detailed once architecture specifications are finalized.)*
-
 
 
 ## System Architecture
 
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant UI as UI (Vue.js + Tauri)
+    participant ENG as Calculation Engine (Rust)
+    participant FS as Local File System
 
+    U->>UI: Enter item & container data
+    UI->>UI: Validate input (types, ranges, required)
+
+    alt Invalid
+        UI-->>U: Show inline errors
+    else Valid
+        UI->>ENG: Calculate(item dims, qty, weight, container)
+        ENG->>ENG: Compute totals (volume, weight)
+        ENG->>ENG: Compute utilization (volume/weight)
+        ENG->>ENG: Determine max fit (geometry vs weight)
+        ENG-->>UI: Results {totals, utilization, limiting factor}
+        UI-->>U: Render results & indicators
+
+        opt Export requested (CSV/JSON)
+            UI->>FS: Write export file
+            FS-->>UI: Success / failure
+            UI-->>U: Notify
+        end
+    end
+
+   
+```
 
 Current architecture reflects a single-process desktop design optimized for local computations.
 Future versions may include additional modules or storage layers.
